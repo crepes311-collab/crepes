@@ -172,10 +172,7 @@ const MENU_DATA = [
 const GALLERY_IMAGES = [
   { type: "image", src: "assets/images/foto1.jpg" },
   { type: "image", src: "assets/images/foto2.jpg" },
-  { type: "image", src: "assets/images/foto3.jpg" },
-
-  { type: "video", src: "assets/images/video1.mp4" },
-  { type: "video", src: "assets/images/video2.mp4" }
+  { type: "image", src: "assets/images/foto3.jpg" }
 ];
 
 // ─── FAQ ──────────────────────────────────────────────────────
