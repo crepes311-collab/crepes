@@ -145,7 +145,7 @@ const MENU_DATA = [
         name: 'Coca-Cola® 500 ml',
         desc: 'Soyuq içki',
         price: 2.99,
-        img: 'assets/images/crepe-food.jpg',
+        img: 'assets/images/colo.jpg',
         popular: false
       },
       {
@@ -153,7 +153,7 @@ const MENU_DATA = [
         name: 'Fanta® 500 ml',
         desc: 'Soyuq içki',
         price: 2.99,
-        img: 'assets/images/crepe-food.jpg',
+        img: 'assets/images/fanta.jpg',
         popular: false
       },
       {
@@ -161,7 +161,7 @@ const MENU_DATA = [
         name: 'Sprite® 500 ml',
         desc: 'Soyuq içki',
         price: 2.99,
-        img: 'assets/images/crepe-food.jpg',
+        img: 'assets/images/sprite.jpg',
         popular: false
       }
     ]
