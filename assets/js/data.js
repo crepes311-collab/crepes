@@ -170,15 +170,11 @@ const MENU_DATA = [
 
 // ─── GALLERY ─────────────────────────────────────────────────
 const GALLERY_IMAGES = [
-  { src: 'assets/images/crepe-food.jpg', caption: '"Crepes" Şirin Turş Sousda Toyuq ilə' },
-  { src: 'assets/images/crepe-food.jpg', caption: '"Crepes" Nutella® ilə' },
-  { src: 'assets/images/crepe-food.jpg', caption: '"Crepes" Banan Qaymaq ilə' },
-  { src: 'assets/images/crepe-food.jpg', caption: '"Crepes" Snickers® ilə' },
-  { src: 'assets/images/crepe-food.jpg', caption: '"Crepes" Bounty® ilə' },
-  { src: 'assets/images/crepe-food.jpg', caption: '"Crepes" Julyen ilə' },
-  { src: 'assets/images/crepe-food.jpg', caption: '"Crepes" Giləmeyvə ilə' },
-  { src: 'assets/images/crepe-food.jpg', caption: '"Crepes" Pendir ilə' },
-  { src: 'assets/images/crepe-food.jpg', caption: '"Crepes" Blindoq' }
+  { src: 'assets/images/foto1.jpg', caption: '"' },
+  { src: 'assets/images/foto2.jpg', caption: '"' },
+  { src: 'assets/images/foto3.jpg', caption: '"' },
+  { src: 'assets/images/video1.mp4', caption: '"' },
+  { src: 'assets/images/video2.mp4', caption: '"' }
 ];
 
 // ─── FAQ ──────────────────────────────────────────────────────
