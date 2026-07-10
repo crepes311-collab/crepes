@@ -170,11 +170,12 @@ const MENU_DATA = [
 
 // ─── GALLERY ─────────────────────────────────────────────────
 const GALLERY_IMAGES = [
-  { src: 'assets/images/foto1.jpg', caption: '"' },
-  { src: 'assets/images/foto2.jpg', caption: '"' },
-  { src: 'assets/images/foto3.jpg', caption: '"' },
-  { src: 'assets/images/video1.mp4', caption: '"' },
-  { src: 'assets/images/video2.mp4', caption: '"' }
+  { type: "image", src: "assets/images/foto1.jpg" },
+  { type: "image", src: "assets/images/foto2.jpg" },
+  { type: "image", src: "assets/images/foto3.jpg" },
+
+  { type: "video", src: "assets/images/video1.mp4" },
+  { type: "video", src: "assets/images/video2.mp4" }
 ];
 
 // ─── FAQ ──────────────────────────────────────────────────────
