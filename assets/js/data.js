@@ -392,7 +392,7 @@ const MENU_DATA = [
         name: { az: 'Çay (M) və Mini Crepes', en: 'Tea (M) & Mini Crepes', ru: 'Чай (M) и Мини Крепе' },
         desc: { az: 'Orta ölçülü çay və mini krepler', en: 'Medium tea and mini crepes', ru: 'Чай среднего размера и мини-крепе' },
         price: 2.00,
-        img: 'assets/images/bananqaymaq.jpg',
+        img: 'assets/images/caykrep.jpg',
         popular: false
       },
       {
