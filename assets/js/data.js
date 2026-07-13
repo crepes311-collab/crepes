@@ -64,7 +64,7 @@ const MENU_DATA = [
         name: { az: '"Crepes" Ştrudel ilə', en: '"Crepes" Strudel', ru: '"Crepes" Штрудель' },
         desc: { az: 'Alma, darçın, qatılaşdırılmış süd', en: 'Apple, cinnamon, condensed milk', ru: 'Яблоко, корица, сгущённое молоко' },
         price: 5.99,
-        img: 'assets/images/crepe-food.jpg',
+        img: 'assets/images/ştrudel.jpg',
         popular: false
       },
       {
@@ -80,7 +80,7 @@ const MENU_DATA = [
         name: { az: 'Crepes Duzlu Karamel ilə', en: 'Crepes with Salted Caramel', ru: 'Крепе с Солёной Карамелью' },
         desc: { az: 'Duzlu karamel', en: 'Salted caramel', ru: 'Солёная карамель' },
         price: 5.99,
-        img: 'assets/images/bananqaymaq.jpg',
+        img: 'assets/images/duzlukaramel.jpg',
         popular: false
       },
       {
@@ -88,7 +88,7 @@ const MENU_DATA = [
         name: { az: 'Crepes Fıstıq və Nutella ilə', en: 'Crepes with Peanut & Nutella', ru: 'Крепе с Арахисом и Нутеллой' },
         desc: { az: 'Fıstıq, Nutella', en: 'Peanut, Nutella', ru: 'Арахис, Нутелла' },
         price: 5.99,
-        img: 'assets/images/bananqaymaq.jpg',
+        img: 'assets/images/fıstıqnutellakrep.jpg',
         popular: false
       },
       {
@@ -96,7 +96,7 @@ const MENU_DATA = [
         name: { az: 'Crepes Extra Nutella və Banan Qaymaq ilə', en: 'Crepes Extra Nutella & Banana Cream', ru: 'Крепе Экстра Нутелла и Банан со Сливками' },
         desc: { az: 'Extra Nutella, banan, qaymaq', en: 'Extra Nutella, banana, cream', ru: 'Экстра Нутелла, банан, сливки' },
         price: 7.99,
-        img: 'assets/images/bananqaymaq.jpg',
+        img: 'assets/images/bananqaymaqkrep.jpg',
         popular: false
       },
       {
@@ -384,7 +384,7 @@ const MENU_DATA = [
         name: { az: 'Doyumlu Krep + Şirin Krep + İçki', en: 'Savory Crepe + Sweet Crepe + Drink', ru: 'Сытный Крепе + Сладкий Крепе + Напиток' },
         desc: { az: 'Sərfəli set - doyumlu krep, şirin krep və bir içki', en: 'Value set - savory crepe, sweet crepe and a drink', ru: 'Выгодный сет - сытный крепе, сладкий крепе и напиток' },
         price: 10.00,
-        img: 'assets/images/bananqaymaq.jpg',
+        img: 'assets/images/badam.jpg',
         popular: true
       },
       {
@@ -400,7 +400,7 @@ const MENU_DATA = [
         name: { az: 'Nescafe və Mini Crep', en: 'Nescafe & Mini Crepe', ru: 'Нескафе и Мини Крепе' },
         desc: { az: 'Nescafe və mini krep', en: 'Nescafe and mini crepe', ru: 'Нескафе и мини-крепе' },
         price: 3.00,
-        img: 'assets/images/bananqaymaq.jpg',
+        img: 'assets/images/nescafekrep.jpg',
         popular: false
       }
     ]
