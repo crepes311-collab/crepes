@@ -40,7 +40,7 @@ const MENU_DATA = [
         name: { az: '"Crepes" Banan Qaymaq ilə', en: '"Crepes" with Banana & Cream', ru: '"Crepes" с Бананом и Сливками' },
         desc: { az: 'Banan, qaymaq, qatılaşdırılmış süd', en: 'Banana, cream, condensed milk', ru: 'Банан, сливки, сгущённое молоко' },
         price: 5.99,
-        img: 'assets/images/bananqaymaqnutella.jpg',
+        img: 'assets/images/bananqaymaq2.jpg',
         popular: true
       },
       {
