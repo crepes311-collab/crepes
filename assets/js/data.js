@@ -72,7 +72,7 @@ const MENU_DATA = [
         name: { az: 'Crepes Sadə', en: 'Plain Crepe', ru: 'Простой Крепе' },
         desc: { az: 'Sadə krep', en: 'Plain crepe', ru: 'Простой крепе' },
         price: 2.00,
-        img: 'assets/images/bananqaymaq.jpg',
+        img: 'assets/images/crep.jpg',
         popular: false
       },
       {
@@ -104,7 +104,7 @@ const MENU_DATA = [
         name: { az: 'Əlavə Nutella (kiçik)', en: 'Extra Nutella (small)', ru: 'Дополнительная Нутелла (маленькая)' },
         desc: { az: 'Əlavə Nutella porsiyon (kiçik)', en: 'Extra Nutella portion (small)', ru: 'Дополнительная порция Нутеллы (маленькая)' },
         price: 1.00,
-        img: 'assets/images/bananqaymaq.jpg',
+        img: 'assets/images/nutella.jpg',
         popular: false
       },
       {
@@ -112,7 +112,7 @@ const MENU_DATA = [
         name: { az: 'Əlavə Nutella (böyük)', en: 'Extra Nutella (large)', ru: 'Дополнительная Нутелла (большая)' },
         desc: { az: 'Əlavə Nutella porsiyon (böyük)', en: 'Extra Nutella portion (large)', ru: 'Дополнительная порция Нутеллы (большая)' },
         price: 2.00,
-        img: 'assets/images/bananqaymaq.jpg',
+        img: 'assets/images/nutella.jpg',
         popular: false
       }
     ]
@@ -204,7 +204,7 @@ const MENU_DATA = [
         name: { az: 'Ayran', en: 'Ayran', ru: 'Айран' },
         desc: { az: 'Soyuq içki', en: 'Cold drink', ru: 'Холодный напиток' },
         price: 1.00,
-        img: 'assets/images/bananqaymaq.jpg',
+        img: 'assets/images/ayran.jpg',
         popular: false
       },
       {
@@ -212,7 +212,7 @@ const MENU_DATA = [
         name: { az: 'Su', en: 'Water', ru: 'Вода' },
         desc: { az: 'Soyuq su', en: 'Cold water', ru: 'Холодная вода' },
         price: 1.00,
-        img: 'assets/images/bananqaymaq.jpg',
+        img: 'assets/images/su.jpg',
         popular: false
       },
       {
