@@ -15,7 +15,7 @@ const MENU_DATA = [
         id: 's1',
         name: { az: '"Crepes" Bounty® ilə', en: '"Crepes" with Bounty®', ru: '"Crepes" с Bounty®' },
         desc: { az: 'Kokos, qaymaq, qatılaşdırılmış süd', en: 'Coconut, cream, condensed milk', ru: 'Кокос, сливки, сгущённое молоко' },
-        price: 5.99,
+        price: 4.00,
         img: 'assets/images/bounty.jpg',
         popular: true
       },
@@ -23,7 +23,7 @@ const MENU_DATA = [
         id: 's2',
         name: { az: '"Crepes" Nutella® ilə', en: '"Crepes" with Nutella®', ru: '"Crepes" с Nutella®' },
         desc: { az: 'Nutella', en: 'Nutella', ru: 'Nutella' },
-        price: 5.99,
+        price: 4.00,
         img: 'assets/images/nutellaile.jpg',
         popular: true
       },
@@ -31,7 +31,7 @@ const MENU_DATA = [
         id: 's3',
         name: { az: '"Crepes" Snickers® ilə', en: '"Crepes" with Snickers®', ru: '"Crepes" со Snickers®' },
         desc: { az: 'Karamel, Araxis, Nutella®', en: 'Caramel, Araxis, Nutella®', ru: 'Карамель, Araxis, Nutella®' },
-        price: 5.99,
+        price: 4.00,
         img: 'assets/images/snickers.jpg',
         popular: true
       },
@@ -39,7 +39,7 @@ const MENU_DATA = [
         id: 's4',
         name: { az: '"Crepes" Banan Qaymaq ilə', en: '"Crepes" with Banana & Cream', ru: '"Crepes" с Бананом и Сливками' },
         desc: { az: 'Banan, qaymaq, qatılaşdırılmış süd', en: 'Banana, cream, condensed milk', ru: 'Банан, сливки, сгущённое молоко' },
-        price: 5.99,
+        price: 4.00,
         img: 'assets/images/bananqaymaq2.jpg',
         popular: true
       },
@@ -47,7 +47,7 @@ const MENU_DATA = [
         id: 's5',
         name: { az: '"Crepes" Banan Qaymaq və Nutella® ilə', en: '"Crepes" with Banana, Cream & Nutella®', ru: '"Crepes" с Бананом, Сливками и Nutella®' },
         desc: { az: 'Banan, qaymaq, Nutella®', en: 'Banana, cream, Nutella®', ru: 'Банан, сливки, Nutella®' },
-        price: 5.99,
+        price: 4.00,
         img: 'assets/images/bananqaymaqnutella.jpg',
         popular: true
       },
@@ -55,7 +55,7 @@ const MENU_DATA = [
         id: 's6',
         name: { az: '"Crepes" Giləmeyvə ilə', en: '"Crepes" with Berries', ru: '"Crepes" с Ягодами' },
         desc: { az: 'Çiyələk', en: 'Strawberry', ru: 'Клубника' },
-        price: 5.99,
+        price: 4.00,
         img: 'assets/images/gile.jpg',
         popular: false
       },
@@ -63,7 +63,7 @@ const MENU_DATA = [
         id: 's7',
         name: { az: '"Crepes" Ştrudel ilə', en: '"Crepes" Strudel', ru: '"Crepes" Штрудель' },
         desc: { az: 'Alma, darçın, qatılaşdırılmış süd', en: 'Apple, cinnamon, condensed milk', ru: 'Яблоко, корица, сгущённое молоко' },
-        price: 5.99,
+        price: 4.00,
         img: 'assets/images/ştrudel.jpg',
         popular: false
       },
@@ -79,7 +79,7 @@ const MENU_DATA = [
         id: 'sn2',
         name: { az: 'Crepes Duzlu Karamel ilə', en: 'Crepes with Salted Caramel', ru: 'Крепе с Солёной Карамелью' },
         desc: { az: 'Duzlu karamel', en: 'Salted caramel', ru: 'Солёная карамель' },
-        price: 5.99,
+        price: 4.00,
         img: 'assets/images/duzlukaramel.jpg',
         popular: false
       },
@@ -87,7 +87,7 @@ const MENU_DATA = [
         id: 'sn3',
         name: { az: 'Crepes Fıstıq və Nutella ilə', en: 'Crepes with Peanut & Nutella', ru: 'Крепе с Арахисом и Нутеллой' },
         desc: { az: 'Fıstıq, Nutella', en: 'Peanut, Nutella', ru: 'Арахис, Нутелла' },
-        price: 5.99,
+        price: 4.00,
         img: 'assets/images/fıstıqnutellakrep.jpg',
         popular: false
       },
@@ -95,7 +95,7 @@ const MENU_DATA = [
         id: 'sn4',
         name: { az: 'Crepes Extra Nutella və Banan Qaymaq ilə', en: 'Crepes Extra Nutella & Banana Cream', ru: 'Крепе Экстра Нутелла и Банан со Сливками' },
         desc: { az: 'Extra Nutella, banan, qaymaq', en: 'Extra Nutella, banana, cream', ru: 'Экстра Нутелла, банан, сливки' },
-        price: 7.99,
+        price: 4.00,
         img: 'assets/images/bananqaymaqkrep.jpg',
         popular: false
       },
@@ -125,7 +125,7 @@ const MENU_DATA = [
         id: 'd1',
         name: { az: '"Crepes" Blindoq', en: '"Crepes" Blindoq', ru: '"Crepes" Блиндок' },
         desc: { az: 'Sosis, holland pendiri', en: 'Sausage, Holland cheese', ru: 'Сосиска, голландский сыр' },
-        price: 5.99,
+        price: 4.00,
         img: 'assets/images/blindoq.jpg',
         popular: false
       },
@@ -133,7 +133,7 @@ const MENU_DATA = [
         id: 'd2',
         name: { az: '"Crepes" Julyen ilə', en: '"Crepes" with Julienne', ru: '"Crepes" с Жюльеном' },
         desc: { az: 'Qöbələk, qaymaq, holland pendiri', en: 'Mushroom, cream, Holland cheese', ru: 'Грибы, сливки, голландский сыр' },
-        price: 11.49,
+        price: 8.00,
         img: 'assets/images/julyen.jpg',
         popular: false
       },
@@ -141,7 +141,7 @@ const MENU_DATA = [
         id: 'd3',
         name: { az: '"Crepes" Şirin və Turş Sousda Toyuq ilə', en: '"Crepes" Chicken in Sweet & Sour Sauce', ru: '"Crepes" Курица в Кисло-Сладком Соусе' },
         desc: { az: 'Toyuq, şirin və turş sousu, holland pendiri', en: 'Chicken, sweet & sour sauce, Holland cheese', ru: 'Курица, кисло-сладкий соус, голландский сыр' },
-        price: 11.49,
+        price: 8.00,
         img: 'assets/images/soustoyuq.jpg',
         popular: false
       },
@@ -149,7 +149,7 @@ const MENU_DATA = [
         id: 'd4',
         name: { az: '"Crepes" Ədviyyatlı Toyuq Tərəvəz ilə', en: '"Crepes" Spicy Chicken & Vegetables', ru: '"Crepes" Пряная Курица с Овощами' },
         desc: { az: 'Toyuq əti, ədviyyatlı sousu, mangal salatı, holland pendiri', en: 'Chicken, spicy sauce, grilled salad, Holland cheese', ru: 'Курица, пряный соус, мангал-салат, голландский сыр' },
-        price: 11.49,
+        price: 8.00,
         img: 'assets/images/toyuqterevez.jpg',
         popular: false
       },
@@ -157,7 +157,7 @@ const MENU_DATA = [
         id: 'd5',
         name: { az: '"Crepes" Pendir ilə', en: '"Crepes" with Cheese', ru: '"Crepes" с Сыром' },
         desc: { az: 'Holland pendiri', en: 'Holland cheese', ru: 'Голландский сыр' },
-        price: 5.99,
+        price: 4.00,
         img: 'assets/images/pendir.jpg',
         popular: false
       },
@@ -165,7 +165,7 @@ const MENU_DATA = [
         id: 'dn1',
         name: { az: 'Crepes Ət və Pendir ilə', en: 'Crepes with Meat & Cheese', ru: 'Крепе с Мясом и Сыром' },
         desc: { az: 'Ət, pendir', en: 'Meat, cheese', ru: 'Мясо, сыр' },
-        price: 7.99,
+        price: 8.00,
         img: 'assets/images/bananqaymaq.jpg',
         popular: false
       }
