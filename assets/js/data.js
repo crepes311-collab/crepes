@@ -290,7 +290,7 @@ const MENU_DATA = [
         name: { az: 'Espresso Lavazza (S)', en: 'Espresso Lavazza (S)', ru: 'Эспрессо Lavazza (S)' },
         desc: { az: 'İsti qəhvə', en: 'Hot coffee', ru: 'Горячий кофе' },
         price: 2.00,
-        img: 'assets/images/bananqaymaq.jpg',
+        img: 'assets/images/espresso.jpg',
         popular: false
       },
       {
@@ -306,7 +306,7 @@ const MENU_DATA = [
         name: { az: 'Latte Lavazza (S)', en: 'Latte Lavazza (S)', ru: 'Латте Lavazza (S)' },
         desc: { az: 'İsti süd qəhvəsi', en: 'Hot milk coffee', ru: 'Горячий кофе с молоком' },
         price: 4.00,
-        img: 'assets/images/bananqaymaq.jpg',
+        img: 'assets/images/latte.jpg',
         popular: false
       },
       {
@@ -314,7 +314,7 @@ const MENU_DATA = [
         name: { az: 'Latte Lavazza (M)', en: 'Latte Lavazza (M)', ru: 'Латте Lavazza (M)' },
         desc: { az: 'İsti süd qəhvəsi', en: 'Hot milk coffee', ru: 'Горячий кофе с молоком' },
         price: 6.00,
-        img: 'assets/images/bananqaymaq.jpg',
+        img: 'assets/images/latte.jpg',
         popular: false
       },
       {
@@ -322,7 +322,7 @@ const MENU_DATA = [
         name: { az: 'Cappuchino Lavazza (S)', en: 'Cappuccino Lavazza (S)', ru: 'Капучино Lavazza (S)' },
         desc: { az: 'İsti cappuchino', en: 'Hot cappuccino', ru: 'Горячий капучино' },
         price: 4.00,
-        img: 'assets/images/bananqaymaq.jpg',
+        img: 'assets/images/cappucino.jpg',
         popular: false
       },
       {
@@ -330,7 +330,7 @@ const MENU_DATA = [
         name: { az: 'Cappuchino Lavazza (M)', en: 'Cappuccino Lavazza (M)', ru: 'Капучино Lavazza (M)' },
         desc: { az: 'İsti cappuchino', en: 'Hot cappuccino', ru: 'Горячий капучино' },
         price: 6.00,
-        img: 'assets/images/bananqaymaq.jpg',
+        img: 'assets/images/cappucino.jpg',
         popular: false
       },
       {
@@ -338,7 +338,7 @@ const MENU_DATA = [
         name: { az: 'Mokka Lavazza (S)', en: 'Mocha Lavazza (S)', ru: 'Мокка Lavazza (S)' },
         desc: { az: 'İsti mokka', en: 'Hot mocha', ru: 'Горячая мокка' },
         price: 5.00,
-        img: 'assets/images/bananqaymaq.jpg',
+        img: 'assets/images/mokka.jpg',
         popular: false
       },
       {
@@ -346,7 +346,7 @@ const MENU_DATA = [
         name: { az: 'Mokka Lavazza (M)', en: 'Mocha Lavazza (M)', ru: 'Мокка Lavazza (M)' },
         desc: { az: 'İsti mokka', en: 'Hot mocha', ru: 'Горячая мокка' },
         price: 7.00,
-        img: 'assets/images/bananqaymaq.jpg',
+        img: 'assets/images/mokka.jpg',
         popular: false
       },
       {
