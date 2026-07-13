@@ -228,7 +228,7 @@ const MENU_DATA = [
         name: { az: 'Coca-Cola / Fanta / Sprite 0.5 ml', en: 'Coca-Cola / Fanta / Sprite 0.5 ml', ru: 'Coca-Cola / Fanta / Sprite 0.5 мл' },
         desc: { az: 'Soyuq içki 0.5 ml', en: 'Cold drink 0.5 ml', ru: 'Холодный напиток 0.5 мл' },
         price: 2.00,
-        img: 'assets/images/colo.jpg',
+        img: 'assets/images/fanta.jpg',
         popular: false
       },
       {
@@ -236,7 +236,7 @@ const MENU_DATA = [
         name: { az: 'Bizon', en: 'Bizon', ru: 'Бизон' },
         desc: { az: 'Enerji içkisi', en: 'Energy drink', ru: 'Энергетический напиток' },
         price: 2.00,
-        img: 'assets/images/bananqaymaq.jpg',
+        img: 'assets/images/sprite.jpg',
         popular: false
       },
       {
@@ -244,7 +244,7 @@ const MENU_DATA = [
         name: { az: 'Cappy', en: 'Cappy', ru: 'Cappy' },
         desc: { az: 'Meyvə suyu', en: 'Fruit juice', ru: 'Фруктовый сок' },
         price: 2.00,
-        img: 'assets/images/bananqaymaq.jpg',
+        img: 'assets/images/cappy.jpg',
         popular: false
       },
       {
@@ -252,7 +252,7 @@ const MENU_DATA = [
         name: { az: 'Fuse Tea', en: 'Fuse Tea', ru: 'Fuse Tea' },
         desc: { az: 'Soyuq çay', en: 'Iced tea', ru: 'Холодный чай' },
         price: 2.00,
-        img: 'assets/images/bananqaymaq.jpg',
+        img: 'assets/images/fusetea.jpg',
         popular: false
       }
     ]
@@ -266,7 +266,7 @@ const MENU_DATA = [
         name: { az: 'Çay (S)', en: 'Tea (S)', ru: 'Чай (S)' },
         desc: { az: 'İsti çay', en: 'Hot tea', ru: 'Горячий чай' },
         price: 1.00,
-        img: 'assets/images/bananqaymaq.jpg',
+        img: 'assets/images/cay.jpg',
         popular: false
       },
       {
@@ -274,7 +274,7 @@ const MENU_DATA = [
         name: { az: 'Çay (M)', en: 'Tea (M)', ru: 'Чай (M)' },
         desc: { az: 'İsti çay', en: 'Hot tea', ru: 'Горячий чай' },
         price: 2.00,
-        img: 'assets/images/bananqaymaq.jpg',
+        img: 'assets/images/cay.jpg',
         popular: false
       },
       {
@@ -282,7 +282,7 @@ const MENU_DATA = [
         name: { az: 'Çay (XL)', en: 'Tea (XL)', ru: 'Чай (XL)' },
         desc: { az: 'İsti çay', en: 'Hot tea', ru: 'Горячий чай' },
         price: 3.00,
-        img: 'assets/images/bananqaymaq.jpg',
+        img: 'assets/images/cay.jpg',
         popular: false
       },
       {
@@ -298,7 +298,7 @@ const MENU_DATA = [
         name: { az: 'Americano Lavazza (M)', en: 'Americano Lavazza (M)', ru: 'Американо Lavazza (M)' },
         desc: { az: 'İsti qəhvə', en: 'Hot coffee', ru: 'Горячий кофе' },
         price: 3.00,
-        img: 'assets/images/bananqaymaq.jpg',
+        img: 'assets/images/americano.jpg',
         popular: false
       },
       {
@@ -354,7 +354,7 @@ const MENU_DATA = [
         name: { az: 'Nescafe', en: 'Nescafe', ru: 'Нескафе' },
         desc: { az: 'İsti qəhvə', en: 'Hot coffee', ru: 'Горячий кофе' },
         price: 2.00,
-        img: 'assets/images/bananqaymaq.jpg',
+        img: 'assets/images/nes.jpg',
         popular: false
       },
       {
@@ -362,7 +362,7 @@ const MENU_DATA = [
         name: { az: 'Kakao', en: 'Cocoa', ru: 'Какао' },
         desc: { az: 'İsti kakao', en: 'Hot cocoa', ru: 'Горячее какао' },
         price: 2.00,
-        img: 'assets/images/bananqaymaq.jpg',
+        img: 'assets/images/kakao.jpg',
         popular: false
       },
       {
@@ -370,7 +370,7 @@ const MENU_DATA = [
         name: { az: 'Sirop', en: 'Syrup', ru: 'Сироп' },
         desc: { az: 'Sirop əlavəsi', en: 'Syrup addition', ru: 'Добавка сиропа' },
         price: 1.00,
-        img: 'assets/images/bananqaymaq.jpg',
+        img: 'assets/images/sirop.jpg',
         popular: false
       }
     ]
