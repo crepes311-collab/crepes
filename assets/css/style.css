@@ -36,7 +36,7 @@ body {
 }
 
 img { display: block; max-width: 100%; }
-button { font-family: var(--font); cursor: pointer; border: none; outline: none; }
+button { font-family: var(--font); cursor: pointer; border: none; outline: none; touch-action: manipulation; }
 input, select, textarea { font-family: var(--font); font-size: 15px; }
 a { text-decoration: none; color: inherit; }
 
@@ -638,9 +638,10 @@ a { text-decoration: none; color: inherit; }
   border-radius: 10px;
   background: var(--bg);
   color: var(--text);
-  font-size: 15px;
+  font-size: 16px;
   transition: 0.2s;
   -webkit-appearance: none;
+  touch-action: manipulation;
 }
 
 .form-group input:focus,
@@ -668,7 +669,11 @@ a { text-decoration: none; color: inherit; }
 .submit-btn:active { transform: scale(0.98); }
 
 /* Location */
-.location-group { flex-direction: row; align-items: center; gap: 10px; }
+.location-group {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+}
 
 .location-btn {
   display: flex;
@@ -681,11 +686,20 @@ a { text-decoration: none; color: inherit; }
   font-size: 14px;
   font-weight: 700;
   transition: 0.2s;
-  white-space: nowrap;
+  white-space: normal;
+  word-break: break-word;
+  max-width: 100%;
+  width: auto;
+  touch-action: manipulation;
 }
 
 .location-btn:active { background: var(--primary2); }
-.location-status { font-size: 12px; color: var(--text2); flex: 1; }
+.location-status {
+  font-size: 12px;
+  color: var(--text2);
+  width: 100%;
+  word-break: break-word;
+}
 .location-status.ok { color: #128c7e; font-weight: 700; }
 .location-status.err { color: #e53e3e; }
 
@@ -789,7 +803,8 @@ a { text-decoration: none; color: inherit; }
   border-radius: 10px;
   background: var(--bg);
   color: var(--text);
-  font-size: 14px;
+  font-size: 16px;
+  touch-action: manipulation;
 }
 
 .add-manual-btn {

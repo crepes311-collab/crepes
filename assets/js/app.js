@@ -485,7 +485,7 @@ function quickAdd(e, itemId) {
   addToCart(itemId);
 }
 
-function addToCart(itemId) {
+function addToCart(itemId, silent) {
   const item = findItem(itemId);
   if (!item) return;
 
@@ -496,7 +496,13 @@ function addToCart(itemId) {
   }
 
   updateCartUI();
-  showToast(`"${getItemName(item)}" ${t('toast_added')}`);
+  // If called from order page qty controls, re-render instantly without toast
+  if (silent) {
+    renderOrderItems();
+    updateOrderTotal();
+  } else {
+    showToast(`"${getItemName(item)}" ${t('toast_added')}`);
+  }
 }
 
 function removeFromCart(itemId) {
@@ -508,12 +514,14 @@ function removeFromCart(itemId) {
   }
   updateCartUI();
   renderOrderItems();
+  updateOrderTotal();
 }
 
 function clearCart() {
   cart = {};
   updateCartUI();
   renderOrderItems();
+  updateOrderTotal();
 }
 
 function updateCartUI() {
@@ -539,45 +547,101 @@ function getCartCount() {
 
 function renderOrderItems() {
   const entries = Object.values(cart);
-  orderItemsList.innerHTML = '';
+
+  // Clear only item rows (not emptyCartMsg which is a static element)
+  const existingRows = orderItemsList.querySelectorAll('.order-item-row');
+  existingRows.forEach(r => r.remove());
 
   if (entries.length === 0) {
     orderSummary.style.display = 'none';
-    const msgEl = document.getElementById('emptyCartMsg');
-    msgEl.innerHTML = `<span data-i18n="cart_empty">${t('cart_empty')}</span> <button class="text-link" onclick="navigateTo('menyu')" data-i18n="cart_go_menu">${t('cart_go_menu')}</button>`;
-    orderItemsList.appendChild(msgEl);
-    msgEl.style.display = 'block';
+    emptyCartMsg.style.display = 'block';
+    emptyCartMsg.innerHTML = `<span>${t('cart_empty')}</span> <button class="text-link" onclick="navigateTo('menyu')">${t('cart_go_menu')}</button>`;
     return;
   }
 
-  const msgEl = document.getElementById('emptyCartMsg');
-  msgEl.style.display = 'none';
+  emptyCartMsg.style.display = 'none';
   orderSummary.style.display = 'block';
 
   entries.forEach(({ item, qty }) => {
     const row = document.createElement('div');
     row.className = 'order-item-row';
+    const itemId = item.id.replace(/'/g, "\\'");
     row.innerHTML = `
       <span class="oi-name">${getItemName(item)}</span>
       <div class="oi-qty-ctrl">
-        <button class="oi-qty-btn" onclick="removeFromCart('${item.id}')">−</button>
+        <button class="oi-qty-btn" data-action="dec" data-id="${item.id}">−</button>
         <span class="oi-qty">${qty}</span>
-        <button class="oi-qty-btn" onclick="addToCart('${item.id}')">+</button>
+        <button class="oi-qty-btn" data-action="inc" data-id="${item.id}">+</button>
       </div>
       <span class="oi-price">${formatPrice(item.price * qty)}</span>
-      <button class="oi-remove" onclick="deleteFromCart('${item.id}')">🗑</button>
+      <button class="oi-remove" data-action="del" data-id="${item.id}">🗑</button>
     `;
     orderItemsList.appendChild(row);
   });
 
-  const total = getCartTotal();
-  orderTotal.textContent = formatPrice(total);
+  updateOrderTotal();
 }
+
+function updateOrderTotal() {
+  const total = getCartTotal();
+  if (orderTotal) orderTotal.textContent = formatPrice(total);
+}
+
+// Delegated event handler for order item controls (instant, no re-render flicker)
+document.addEventListener('click', function(e) {
+  const btn = e.target.closest('[data-action]');
+  if (!btn) return;
+  const action = btn.dataset.action;
+  const id = btn.dataset.id;
+  if (!id) return;
+
+  e.stopPropagation();
+
+  if (action === 'inc') {
+    if (cart[id]) {
+      cart[id].qty++;
+    } else {
+      // item might be a manual item with no findItem entry
+      return;
+    }
+    // Update just this row instantly
+    const row = btn.closest('.order-item-row');
+    if (row) {
+      row.querySelector('.oi-qty').textContent = cart[id].qty;
+      const itemPrice = cart[id].item.price;
+      row.querySelector('.oi-price').textContent = formatPrice(itemPrice * cart[id].qty);
+    }
+    updateCartUI();
+    updateOrderTotal();
+  } else if (action === 'dec') {
+    if (!cart[id]) return;
+    if (cart[id].qty > 1) {
+      cart[id].qty--;
+      const row = btn.closest('.order-item-row');
+      if (row) {
+        row.querySelector('.oi-qty').textContent = cart[id].qty;
+        const itemPrice = cart[id].item.price;
+        row.querySelector('.oi-price').textContent = formatPrice(itemPrice * cart[id].qty);
+      }
+      updateCartUI();
+      updateOrderTotal();
+    } else {
+      delete cart[id];
+      updateCartUI();
+      renderOrderItems();
+    }
+  } else if (action === 'del') {
+    delete cart[id];
+    updateCartUI();
+    renderOrderItems();
+  }
+});
 
 function deleteFromCart(itemId) {
   delete cart[itemId];
   updateCartUI();
   renderOrderItems();
+  updateOrderTotal();
 }
 
 // Manual add
@@ -604,6 +668,7 @@ function addManualItem() {
   qtyEl.value  = '1';
   updateCartUI();
   renderOrderItems();
+  updateOrderTotal();
   showToast(`"${name}" ${t('toast_added')}`);
 }
 
@@ -761,7 +826,14 @@ function getLocation() {
 
       userLocationLink = `https://maps.google.com/?q=${lat},${lon}`;
 
+      // Set value without triggering focus/keyboard (prevents viewport jump)
+      addrEl.setAttribute('readonly', 'readonly');
       addrEl.value = `${t('location_text')}${lat}, ${lon}`;
+      // Use requestAnimationFrame to avoid layout thrashing
+      requestAnimationFrame(() => {
+        addrEl.removeAttribute('readonly');
+      });
+
       status.textContent = t('location_ok');
       status.className = 'location-status ok';
       btn.disabled = false;
