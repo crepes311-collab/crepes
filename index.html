@@ -18,17 +18,25 @@
         <img src="assets/images/logo.png" alt="Crepes Logo" class="nav-logo-img" />
         <span class="nav-brand">Crepes</span>
       </div>
-      <button class="nav-toggle" id="navToggle" aria-label="Menu">
-        <span></span><span></span><span></span>
-      </button>
+      <div class="nav-right">
+        <!-- Language Switcher -->
+        <div class="lang-switcher" id="langSwitcher">
+          <button class="lang-btn active" data-lang="az">AZ</button>
+          <button class="lang-btn" data-lang="en">EN</button>
+          <button class="lang-btn" data-lang="ru">RU</button>
+        </div>
+        <button class="nav-toggle" id="navToggle" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
     </div>
     <div class="nav-menu" id="navMenu">
-      <a href="#haqqinda" class="nav-link" data-page="haqqinda">Haqqında</a>
-      <a href="#menyu" class="nav-link" data-page="menyu">Menyu</a>
-      <a href="#qalerya" class="nav-link" data-page="qalerya">Qalerya</a>
-      <a href="#rezervasiya" class="nav-link" data-page="rezervasiya">Rezervasiya</a>
-      <a href="#sifaris" class="nav-link" data-page="sifaris">Sifariş Et</a>
-      <a href="#faq" class="nav-link" data-page="faq">FAQ</a>
+      <a href="#haqqinda" class="nav-link" data-page="haqqinda" data-i18n="nav_about">Haqqında</a>
+      <a href="#menyu" class="nav-link" data-page="menyu" data-i18n="nav_menu">Menyu</a>
+      <a href="#qalerya" class="nav-link" data-page="qalerya" data-i18n="nav_gallery">Qalerya</a>
+      <a href="#rezervasiya" class="nav-link" data-page="rezervasiya" data-i18n="nav_reservation">Rezervasiya</a>
+      <a href="#sifaris" class="nav-link" data-page="sifaris" data-i18n="nav_order">Sifariş Et</a>
+      <a href="#faq" class="nav-link" data-page="faq" data-i18n="nav_faq">FAQ</a>
     </div>
   </nav>
 
@@ -41,35 +49,35 @@
         <div class="hero-logo-wrap">
           <img src="assets/images/logo.png" alt="Crepes Logo" class="hero-logo" />
         </div>
-        <h1 class="hero-title">Salam, Crepes Baku!</h1>
-        <p class="hero-subtitle">Ən dadlı kreplər, ən mehriban atmosfer</p>
+        <h1 class="hero-title" data-i18n="hero_title">Salam, Crepes Baku!</h1>
+        <p class="hero-subtitle" data-i18n="hero_subtitle">Ən dadlı kreplər, ən mehriban atmosfer</p>
       </div>
 
       <div class="about-cards">
         <div class="about-card">
           <div class="about-icon">🕐</div>
-          <h3>İş Saatları</h3>
+          <h3 data-i18n="hours_title">İş Saatları</h3>
           <div class="hours-list">
-            <div class="hour-row"><span>Bazar ertəsi</span><span>09:00 – 22:00</span></div>
-            <div class="hour-row"><span>Çərşənbə axşamı</span><span>09:00 – 22:00</span></div>
-            <div class="hour-row"><span>Çərşənbə</span><span>09:00 – 22:00</span></div>
-            <div class="hour-row"><span>Cümə axşamı</span><span>09:00 – 22:00</span></div>
-            <div class="hour-row"><span>Cümə</span><span>09:00 – 23:00</span></div>
-            <div class="hour-row"><span>Şənbə</span><span>09:00 – 23:00</span></div>
-            <div class="hour-row"><span>Bazar</span><span>10:00 – 22:00</span></div>
+            <div class="hour-row"><span data-i18n="day_mon">Bazar ertəsi</span><span>09:00 – 22:00</span></div>
+            <div class="hour-row"><span data-i18n="day_tue">Çərşənbə axşamı</span><span>09:00 – 22:00</span></div>
+            <div class="hour-row"><span data-i18n="day_wed">Çərşənbə</span><span>09:00 – 22:00</span></div>
+            <div class="hour-row"><span data-i18n="day_thu">Cümə axşamı</span><span>09:00 – 22:00</span></div>
+            <div class="hour-row"><span data-i18n="day_fri">Cümə</span><span>09:00 – 23:00</span></div>
+            <div class="hour-row"><span data-i18n="day_sat">Şənbə</span><span>09:00 – 23:00</span></div>
+            <div class="hour-row"><span data-i18n="day_sun">Bazar</span><span>10:00 – 22:00</span></div>
           </div>
         </div>
 
         <div class="about-card contact-card">
           <div class="about-icon">📞</div>
-          <h3>Əlaqə</h3>
+          <h3 data-i18n="contact_title">Əlaqə</h3>
           <a href="https://wa.me/994505384749" class="contact-item whatsapp-link" target="_blank" rel="noopener">
             <span class="contact-icon">💬</span>
             <span>+994 50 538 47 49</span>
           </a>
           <a href="https://maps.app.goo.gl/uuHVafBdDWwjvdpd6" class="contact-item" target="_blank" rel="noopener">
             <span class="contact-icon">📍</span>
-            <span>Ünvanı Xəritədə Gör</span>
+            <span data-i18n="contact_map">Ünvanı Xəritədə Gör</span>
           </a>
           <a href="https://www.instagram.com/crepes_baku_?igsh=MW1xNXQ0ZDZpcGgzcA==" class="contact-item" target="_blank" rel="noopener">
             <span class="contact-icon">📷</span>
@@ -79,24 +87,26 @@
 
         <div class="about-card info-card">
           <div class="about-icon">ℹ️</div>
-          <h3>Haqqımızda</h3>
-          <p>Salam, Biz Bakıda ən ləzzətli krep təcrübəsini sizə təqdim edirik. Hər bir krep sevgi ilə hazırlanır — şirin və doyumlu, hər zövq üçün seçim var!</p>
+          <h3 data-i18n="about_title">Haqqımızda</h3>
+          <p data-i18n="about_text">Salam, Biz Bakıda ən ləzzətli krep təcrübəsini sizə təqdim edirik. Hər bir krep sevgi ilə hazırlanır — şirin və doyumlu, hər zövq üçün seçim var!</p>
         </div>
       </div>
 
-      <button class="cta-btn" onclick="navigateTo('menyu')">Menyuya Bax 🥞</button>
+      <button class="cta-btn" onclick="navigateTo('menyu')" data-i18n="cta_menu">Menyuya Bax 🥞</button>
     </section>
 
     <!-- ========== MENYU PAGE ========== -->
     <section class="page" id="menyu">
       <div class="page-header">
-        <h2 class="page-title">Menyu</h2>
+        <h2 class="page-title" data-i18n="nav_menu">Menyu</h2>
       </div>
 
-      <div class="menu-tabs">
-        <button class="menu-tab active" data-cat="sirin">🍫 Şirin Kreplər</button>
-        <button class="menu-tab" data-cat="doyumlu">🧀 Doyumlu Kreplər</button>
-        <button class="menu-tab" data-cat="ickilar">🥤 İçkilər</button>
+      <div class="menu-tabs" id="menuTabs">
+        <button class="menu-tab active" data-cat="sirin" data-i18n="tab_sirin">🍫 Şirin Kreplər</button>
+        <button class="menu-tab" data-cat="doyumlu" data-i18n="tab_doyumlu">🧀 Doyumlu Kreplər</button>
+        <button class="menu-tab" data-cat="soyuq" data-i18n="tab_soyuq">🧊 Soyuq İçkilər</button>
+        <button class="menu-tab" data-cat="isti" data-i18n="tab_isti">☕ İsti İçkilər</button>
+        <button class="menu-tab" data-cat="setler" data-i18n="tab_setler">🎁 Setlər</button>
       </div>
 
       <div class="menu-grid" id="menuGrid"></div>
@@ -106,7 +116,7 @@
         <div class="cart-bar-inner">
           <span class="cart-count" id="cartCount">0 məhsul</span>
           <span class="cart-total" id="cartTotal">0,00 ₼</span>
-          <button class="cart-go-btn" onclick="navigateTo('sifaris')">Sifarişə keç →</button>
+          <button class="cart-go-btn" onclick="navigateTo('sifaris')" data-i18n="cart_go">Sifarişə keç →</button>
         </div>
       </div>
     </section>
@@ -114,7 +124,7 @@
     <!-- ========== QALERYA PAGE ========== -->
     <section class="page" id="qalerya">
       <div class="page-header">
-        <h2 class="page-title">Qalerya</h2>
+        <h2 class="page-title" data-i18n="nav_gallery">Qalerya</h2>
         <p class="page-subtitle"></p>
       </div>
       <div class="gallery-grid" id="galleryGrid"></div>
@@ -134,44 +144,44 @@
     <!-- ========== REZERVASIYA PAGE ========== -->
     <section class="page" id="rezervasiya">
       <div class="page-header">
-        <h2 class="page-title">Rezervasiya</h2>
-        <p class="page-subtitle">Əvvəlcədən sifariş edin</p>
+        <h2 class="page-title" data-i18n="nav_reservation">Rezervasiya</h2>
+        <p class="page-subtitle" data-i18n="reservation_subtitle">Əvvəlcədən sifariş edin</p>
       </div>
       <div class="form-card">
         <form id="reservationForm" class="form-body" novalidate>
           <div class="form-group">
-            <label for="resName">Ad Soyad *</label>
-            <input type="text" id="resName" placeholder="Adınız" required />
+            <label for="resName" data-i18n="form_name">Ad Soyad *</label>
+            <input type="text" id="resName" data-i18n-placeholder="form_name_ph" placeholder="Adınız" required />
           </div>
           <div class="form-group">
-            <label for="resPhone">Telefon *</label>
+            <label for="resPhone" data-i18n="form_phone">Telefon *</label>
             <input type="tel" id="resPhone" placeholder="+994 XX XXX XX XX" required />
           </div>
           <div class="form-group">
-            <label for="resDate">Tarix *</label>
+            <label for="resDate" data-i18n="form_date">Tarix *</label>
             <input type="date" id="resDate" required />
           </div>
           <div class="form-group">
-            <label for="resTime">Saat *</label>
+            <label for="resTime" data-i18n="form_time">Saat *</label>
             <input type="time" id="resTime" required />
           </div>
           <div class="form-group">
-            <label for="resPeople">Neçə nəfər? *</label>
+            <label for="resPeople" data-i18n="form_people">Neçə nəfər? *</label>
             <select id="resPeople" required>
-              <option value="">Seçin</option>
-              <option value="1">1 nəfər</option>
-              <option value="2">2 nəfər</option>
-              <option value="3">3 nəfər</option>
-              <option value="4">4 nəfər</option>
-              <option value="5">5 nəfər</option>
-              <option value="6+">6+ nəfər</option>
+              <option value="" data-i18n="form_select">Seçin</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6+">6+</option>
             </select>
           </div>
           <div class="form-group">
-            <label for="resNote">Əlavə qeyd</label>
-            <textarea id="resNote" placeholder="Xüsusi istəklər..." rows="3"></textarea>
+            <label for="resNote" data-i18n="form_note">Əlavə qeyd</label>
+            <textarea id="resNote" data-i18n-placeholder="form_note_ph" placeholder="Xüsusi istəklər..." rows="3"></textarea>
           </div>
-          <button type="submit" class="submit-btn">WhatsApp ilə Göndər 💬</button>
+          <button type="submit" class="submit-btn" data-i18n="reservation_send">WhatsApp ilə Göndər 💬</button>
         </form>
       </div>
     </section>
@@ -179,35 +189,35 @@
     <!-- ========== SİFARİŞ PAGE ========== -->
     <section class="page" id="sifaris">
       <div class="page-header">
-        <h2 class="page-title">Sifariş Et</h2>
-        <p class="page-subtitle">Seçdiyiniz məhsullar</p>
+        <h2 class="page-title" data-i18n="nav_order">Sifariş Et</h2>
+        <p class="page-subtitle" data-i18n="order_subtitle">Seçdiyiniz məhsullar</p>
       </div>
 
       <!-- Order Items from Cart -->
       <div class="order-cart-section" id="orderCartSection">
         <div class="order-items-list" id="orderItemsList">
-          <p class="empty-cart-msg" id="emptyCartMsg">Hələ heç bir məhsul seçilməyib. <button class="text-link" onclick="navigateTo('menyu')">Menyuya get →</button></p>
+          <p class="empty-cart-msg" id="emptyCartMsg"><span data-i18n="cart_empty">Hələ heç bir məhsul seçilməyib.</span> <button class="text-link" onclick="navigateTo('menyu')" data-i18n="cart_go_menu">Menyuya get →</button></p>
         </div>
         <div class="order-summary" id="orderSummary" style="display:none">
           <div class="summary-row">
-            <span>Cəmi:</span>
+            <span data-i18n="order_total">Cəmi:</span>
             <strong id="orderTotal">0,00 ₼</strong>
           </div>
-          <button class="clear-cart-btn" onclick="clearCart()">Səbəti Təmizlə</button>
+          <button class="clear-cart-btn" onclick="clearCart()" data-i18n="cart_clear">Səbəti Təmizlə</button>
         </div>
       </div>
 
       <!-- Manual Add -->
       <div class="form-card" style="margin-top:12px;">
         <div class="manual-add-header">
-          <span>Əl ilə məhsul əlavə et</span>
+          <span data-i18n="manual_add">Əl ilə məhsul əlavə et</span>
           <button class="toggle-manual-btn" id="toggleManualBtn" onclick="toggleManualAdd()">+</button>
         </div>
         <div id="manualAddSection" style="display:none; margin-top:10px;">
           <div class="manual-add-row">
-            <input type="text" id="manualItem" placeholder="Məhsul adı" />
-            <input type="number" id="manualQty" placeholder="Miq." min="1" value="1" style="width:70px;" />
-            <button class="add-manual-btn" onclick="addManualItem()">Əlavə et</button>
+            <input type="text" id="manualItem" data-i18n-placeholder="manual_name" placeholder="Məhsul adı" />
+            <input type="number" id="manualQty" data-i18n-placeholder="manual_qty" placeholder="Miq." min="1" value="1" style="width:70px;" />
+            <button class="add-manual-btn" onclick="addManualItem()" data-i18n="btn_add">Əlavə et</button>
           </div>
         </div>
       </div>
@@ -216,28 +226,28 @@
       <div class="form-card" style="margin-top:12px;">
         <form id="orderForm" class="form-body" novalidate>
           <div class="form-group">
-            <label for="ordName">Ad Soyad *</label>
-            <input type="text" id="ordName" placeholder="Adınız" required />
+            <label for="ordName" data-i18n="form_name">Ad Soyad *</label>
+            <input type="text" id="ordName" data-i18n-placeholder="form_name_ph" placeholder="Adınız" required />
           </div>
           <div class="form-group">
-            <label for="ordPhone">Telefon *</label>
+            <label for="ordPhone" data-i18n="form_phone">Telefon *</label>
             <input type="tel" id="ordPhone" placeholder="+994 XX XXX XX XX" required />
           </div>
           <div class="form-group">
-            <label for="ordAddress">Ünvan / Çatdırılma yeri *</label>
-            <input type="text" id="ordAddress" placeholder="Ünvanınız..." required />
+            <label for="ordAddress" data-i18n="form_address">Ünvan / Çatdırılma yeri *</label>
+            <input type="text" id="ordAddress" data-i18n-placeholder="form_address_ph" placeholder="Ünvanınız..." required />
           </div>
           <div class="form-group location-group">
             <button type="button" class="location-btn" id="locationBtn" onclick="getLocation()">
-              <span>📍</span> Konumumu Al
+              <span>📍</span> <span data-i18n="btn_location">Konumumu Al</span>
             </button>
             <span class="location-status" id="locationStatus"></span>
           </div>
           <div class="form-group">
-            <label for="ordNote">Əlavə qeyd</label>
-            <textarea id="ordNote" placeholder="Xüsusi istəklər..." rows="2"></textarea>
+            <label for="ordNote" data-i18n="form_note">Əlavə qeyd</label>
+            <textarea id="ordNote" data-i18n-placeholder="form_note_ph" placeholder="Xüsusi istəklər..." rows="2"></textarea>
           </div>
-          <button type="submit" class="submit-btn">WhatsApp ilə Sifariş Ver 🛵</button>
+          <button type="submit" class="submit-btn" data-i18n="order_send">WhatsApp ilə Sifariş Ver 🛵</button>
         </form>
       </div>
     </section>
@@ -245,7 +255,7 @@
     <!-- ========== FAQ PAGE ========== -->
     <section class="page" id="faq">
       <div class="page-header">
-        <h2 class="page-title">Tez-tez Sorulan Suallar</h2>
+        <h2 class="page-title" data-i18n="faq_title">Tez-tez Sorulan Suallar</h2>
       </div>
       <div class="faq-list" id="faqList"></div>
     </section>
@@ -256,23 +266,23 @@
   <nav class="bottom-nav" id="bottomNav">
     <button class="bn-item active" data-page="haqqinda" onclick="navigateTo('haqqinda')">
       <span class="bn-icon">🏠</span>
-      <span class="bn-label">Haqqında</span>
+      <span class="bn-label" data-i18n="nav_about">Haqqında</span>
     </button>
     <button class="bn-item" data-page="menyu" onclick="navigateTo('menyu')">
       <span class="bn-icon">🥞</span>
-      <span class="bn-label">Menyu</span>
+      <span class="bn-label" data-i18n="nav_menu">Menyu</span>
     </button>
     <button class="bn-item" data-page="qalerya" onclick="navigateTo('qalerya')">
       <span class="bn-icon">🖼</span>
-      <span class="bn-label">Qalerya</span>
+      <span class="bn-label" data-i18n="nav_gallery">Qalerya</span>
     </button>
     <button class="bn-item" data-page="rezervasiya" onclick="navigateTo('rezervasiya')">
       <span class="bn-icon">📅</span>
-      <span class="bn-label">Rezerv</span>
+      <span class="bn-label" data-i18n="nav_reservation_short">Rezerv</span>
     </button>
     <button class="bn-item" data-page="sifaris" onclick="navigateTo('sifaris')">
       <span class="bn-icon">🛵</span>
-      <span class="bn-label">Sifariş</span>
+      <span class="bn-label" data-i18n="nav_order_short">Sifariş</span>
     </button>
     <button class="bn-item" data-page="faq" onclick="navigateTo('faq')">
       <span class="bn-icon">❓</span>
@@ -290,7 +300,7 @@
       <h3 class="modal-name" id="modalName"></h3>
       <p class="modal-ingredients" id="modalIngredients"></p>
       <div class="modal-price" id="modalPrice"></div>
-      <button class="modal-order-btn" id="modalOrderBtn">Səbətə Əlavə Et 🛒</button>
+      <button class="modal-order-btn" id="modalOrderBtn" data-i18n="modal_add">Səbətə Əlavə Et 🛒</button>
     </div>
   </div>
 

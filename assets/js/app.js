@@ -1,29 +1,338 @@
 /**
  * ============================================================
- *  CREPES - 50 QƏPİK LƏNKƏRAN  |  app.js
+ *  CREPES BAKU  |  app.js
  * ============================================================
- *  WHATSAPP NÖMRƏLƏRI:
- *    ORDER_WA   — Sifariş/Sifariş nömrəsi
- *    RESERVE_WA — Rezervasiya nömrəsi
+ *  WHATSAPP NUMBERS:
+ *    ORDER_WA   — Order number
+ *    RESERVE_WA — Reservation number
  * ============================================================
  */
 
-// ── WhatsApp nömrələri (yalnız rəqəm, "+" olmadan) ──────────
-const ORDER_WA   = '994505384749';  // Sifariş
-const RESERVE_WA = '994505384749';  // Rezervasiya
+// ── WhatsApp numbers (digits only, no "+") ──────────────────
+const ORDER_WA   = '994505384749';
+const RESERVE_WA = '994505384749';
 
-// ── Dövlət ──────────────────────────────────────────────────
-let cart = {};           // { id: { item, qty } }
-let activeCat = 'sirin'; // aktiv kateqoriya
-let currentModal = null; // açıq modalın məhsulu
-let userLocationLink = null; // konum linki
+// ── i18n translations ────────────────────────────────────────
+const TRANSLATIONS = {
+  az: {
+    nav_about: 'Haqqında',
+    nav_menu: 'Menyu',
+    nav_gallery: 'Qalerya',
+    nav_reservation: 'Rezervasiya',
+    nav_reservation_short: 'Rezerv',
+    nav_order: 'Sifariş Et',
+    nav_order_short: 'Sifariş',
+    nav_faq: 'FAQ',
+    hero_title: 'Salam, Crepes Baku!',
+    hero_subtitle: 'Ən dadlı kreplər, ən mehriban atmosfer',
+    hours_title: 'İş Saatları',
+    contact_title: 'Əlaqə',
+    contact_map: 'Ünvanı Xəritədə Gör',
+    about_title: 'Haqqımızda',
+    about_text: 'Salam, Biz Bakıda ən ləzzətli krep təcrübəsini sizə təqdim edirik. Hər bir krep sevgi ilə hazırlanır — şirin və doyumlu, hər zövq üçün seçim var!',
+    cta_menu: 'Menyuya Bax 🥞',
+    tab_sirin: '🍫 Şirin Kreplər',
+    tab_doyumlu: '🧀 Doyumlu Kreplər',
+    tab_soyuq: '🧊 Soyuq İçkilər',
+    tab_isti: '☕ İsti İçkilər',
+    tab_setler: '🎁 Setlər',
+    cart_go: 'Sifarişə keç →',
+    cart_empty: 'Hələ heç bir məhsul seçilməyib.',
+    cart_go_menu: 'Menyuya get →',
+    cart_clear: 'Səbəti Təmizlə',
+    order_total: 'Cəmi:',
+    manual_add: 'Əl ilə məhsul əlavə et',
+    manual_name: 'Məhsul adı',
+    manual_qty: 'Miq.',
+    btn_add: 'Əlavə et',
+    form_name: 'Ad Soyad *',
+    form_name_ph: 'Adınız',
+    form_phone: 'Telefon *',
+    form_date: 'Tarix *',
+    form_time: 'Saat *',
+    form_people: 'Neçə nəfər? *',
+    form_select: 'Seçin',
+    form_note: 'Əlavə qeyd',
+    form_note_ph: 'Xüsusi istəklər...',
+    form_address: 'Ünvan / Çatdırılma yeri *',
+    form_address_ph: 'Ünvanınız...',
+    btn_location: 'Konumumu Al',
+    reservation_subtitle: 'Əvvəlcədən sifariş edin',
+    reservation_send: 'WhatsApp ilə Göndər 💬',
+    order_subtitle: 'Seçdiyiniz məhsullar',
+    order_send: 'WhatsApp ilə Sifariş Ver 🛵',
+    faq_title: 'Tez-tez Sorulan Suallar',
+    modal_add: 'Səbətə Əlavə Et 🛒',
+    modal_ingredients: '🧾 Tərkib: ',
+    toast_added: 'səbətə əlavə edildi 🛒',
+    toast_fill: 'Bütün məcburi xanaları doldurun ⚠️',
+    toast_fill_order: 'Ad, telefon və ünvanı doldurun ⚠️',
+    toast_manual_name: 'Məhsul adını daxil edin',
+    location_getting: 'Konum alınır...',
+    location_not_supported: 'Konum dəstəklənmir',
+    location_text: 'Mənim konum: ',
+    location_ok: '✓ Konum alındı',
+    location_denied: 'Konum icazəsi verilmədi',
+    location_not_found: 'Konum tapılmadı',
+    location_timeout: 'Vaxt başa çatdı',
+    location_error: 'Xəta baş verdi',
+    wa_reservation_header: '📅 *REZERVASİYA SİFARİŞİ*',
+    wa_name: '👤 Ad: ',
+    wa_phone: '📞 Telefon: ',
+    wa_date: '📆 Tarix: ',
+    wa_time: '🕐 Saat: ',
+    wa_people: '👥 Nəfər sayı: ',
+    wa_note: '📝 Qeyd: ',
+    wa_order_header: '🛵 *YENİ SİFARİŞ*',
+    wa_address: '🏠 Ünvan: ',
+    wa_location: '📍 Konum: ',
+    wa_items: '🛒 *Sifariş:*',
+    wa_total: '💰 Cəmi: ',
+    day_mon: 'Bazar ertəsi',
+    day_tue: 'Çərşənbə axşamı',
+    day_wed: 'Çərşənbə',
+    day_thu: 'Cümə axşamı',
+    day_fri: 'Cümə',
+    day_sat: 'Şənbə',
+    day_sun: 'Bazar',
+    cart_count_label: 'məhsul'
+  },
+  en: {
+    nav_about: 'About',
+    nav_menu: 'Menu',
+    nav_gallery: 'Gallery',
+    nav_reservation: 'Reservation',
+    nav_reservation_short: 'Reserve',
+    nav_order: 'Order',
+    nav_order_short: 'Order',
+    nav_faq: 'FAQ',
+    hero_title: 'Welcome to Crepes Baku!',
+    hero_subtitle: 'The tastiest crepes, the warmest atmosphere',
+    hours_title: 'Working Hours',
+    contact_title: 'Contact',
+    contact_map: 'See Location on Map',
+    about_title: 'About Us',
+    about_text: 'Hi! We offer the most delicious crepe experience in Baku. Every crepe is made with love — sweet and savory, there is a choice for every taste!',
+    cta_menu: 'View Menu 🥞',
+    tab_sirin: '🍫 Sweet Crepes',
+    tab_doyumlu: '🧀 Savory Crepes',
+    tab_soyuq: '🧊 Cold Drinks',
+    tab_isti: '☕ Hot Drinks',
+    tab_setler: '🎁 Sets',
+    cart_go: 'Go to Order →',
+    cart_empty: 'No products selected yet.',
+    cart_go_menu: 'Go to Menu →',
+    cart_clear: 'Clear Cart',
+    order_total: 'Total:',
+    manual_add: 'Add item manually',
+    manual_name: 'Product name',
+    manual_qty: 'Qty.',
+    btn_add: 'Add',
+    form_name: 'Full Name *',
+    form_name_ph: 'Your name',
+    form_phone: 'Phone *',
+    form_date: 'Date *',
+    form_time: 'Time *',
+    form_people: 'How many people? *',
+    form_select: 'Select',
+    form_note: 'Additional note',
+    form_note_ph: 'Special requests...',
+    form_address: 'Address / Delivery location *',
+    form_address_ph: 'Your address...',
+    btn_location: 'Get My Location',
+    reservation_subtitle: 'Book in advance',
+    reservation_send: 'Send via WhatsApp 💬',
+    order_subtitle: 'Selected products',
+    order_send: 'Order via WhatsApp 🛵',
+    faq_title: 'Frequently Asked Questions',
+    modal_add: 'Add to Cart 🛒',
+    modal_ingredients: '🧾 Ingredients: ',
+    toast_added: 'added to cart 🛒',
+    toast_fill: 'Please fill in all required fields ⚠️',
+    toast_fill_order: 'Please fill in name, phone and address ⚠️',
+    toast_manual_name: 'Please enter product name',
+    location_getting: 'Getting location...',
+    location_not_supported: 'Location not supported',
+    location_text: 'My location: ',
+    location_ok: '✓ Location obtained',
+    location_denied: 'Location permission denied',
+    location_not_found: 'Location not found',
+    location_timeout: 'Timeout',
+    location_error: 'An error occurred',
+    wa_reservation_header: '📅 *RESERVATION REQUEST*',
+    wa_name: '👤 Name: ',
+    wa_phone: '📞 Phone: ',
+    wa_date: '📆 Date: ',
+    wa_time: '🕐 Time: ',
+    wa_people: '👥 People: ',
+    wa_note: '📝 Note: ',
+    wa_order_header: '🛵 *NEW ORDER*',
+    wa_address: '🏠 Address: ',
+    wa_location: '📍 Location: ',
+    wa_items: '🛒 *Order:*',
+    wa_total: '💰 Total: ',
+    day_mon: 'Monday',
+    day_tue: 'Tuesday',
+    day_wed: 'Wednesday',
+    day_thu: 'Thursday',
+    day_fri: 'Friday',
+    day_sat: 'Saturday',
+    day_sun: 'Sunday',
+    cart_count_label: 'items'
+  },
+  ru: {
+    nav_about: 'О нас',
+    nav_menu: 'Меню',
+    nav_gallery: 'Галерея',
+    nav_reservation: 'Резервация',
+    nav_reservation_short: 'Резерв',
+    nav_order: 'Заказать',
+    nav_order_short: 'Заказ',
+    nav_faq: 'FAQ',
+    hero_title: 'Добро пожаловать в Crepes Baku!',
+    hero_subtitle: 'Самые вкусные крепы, самая тёплая атмосфера',
+    hours_title: 'Часы работы',
+    contact_title: 'Контакты',
+    contact_map: 'Посмотреть на карте',
+    about_title: 'О нас',
+    about_text: 'Привет! Мы предлагаем самый вкусный опыт с крепами в Баку. Каждый крепе готовится с любовью — сладкий и сытный, есть выбор на любой вкус!',
+    cta_menu: 'Смотреть меню 🥞',
+    tab_sirin: '🍫 Сладкие Крепы',
+    tab_doyumlu: '🧀 Сытные Крепы',
+    tab_soyuq: '🧊 Холодные Напитки',
+    tab_isti: '☕ Горячие Напитки',
+    tab_setler: '🎁 Сеты',
+    cart_go: 'К заказу →',
+    cart_empty: 'Товары ещё не выбраны.',
+    cart_go_menu: 'В меню →',
+    cart_clear: 'Очистить корзину',
+    order_total: 'Итого:',
+    manual_add: 'Добавить товар вручную',
+    manual_name: 'Название товара',
+    manual_qty: 'Кол.',
+    btn_add: 'Добавить',
+    form_name: 'Имя Фамилия *',
+    form_name_ph: 'Ваше имя',
+    form_phone: 'Телефон *',
+    form_date: 'Дата *',
+    form_time: 'Время *',
+    form_people: 'Сколько человек? *',
+    form_select: 'Выбрать',
+    form_note: 'Дополнительная заметка',
+    form_note_ph: 'Особые пожелания...',
+    form_address: 'Адрес / Место доставки *',
+    form_address_ph: 'Ваш адрес...',
+    btn_location: 'Получить моё местоположение',
+    reservation_subtitle: 'Забронируйте заранее',
+    reservation_send: 'Отправить через WhatsApp 💬',
+    order_subtitle: 'Выбранные товары',
+    order_send: 'Заказать через WhatsApp 🛵',
+    faq_title: 'Часто задаваемые вопросы',
+    modal_add: 'Добавить в корзину 🛒',
+    modal_ingredients: '🧾 Состав: ',
+    toast_added: 'добавлен в корзину 🛒',
+    toast_fill: 'Пожалуйста, заполните все обязательные поля ⚠️',
+    toast_fill_order: 'Пожалуйста, укажите имя, телефон и адрес ⚠️',
+    toast_manual_name: 'Пожалуйста, введите название товара',
+    location_getting: 'Получение местоположения...',
+    location_not_supported: 'Местоположение не поддерживается',
+    location_text: 'Моё местоположение: ',
+    location_ok: '✓ Местоположение получено',
+    location_denied: 'Доступ к местоположению запрещён',
+    location_not_found: 'Местоположение не найдено',
+    location_timeout: 'Время ожидания истекло',
+    location_error: 'Произошла ошибка',
+    wa_reservation_header: '📅 *ЗАПРОС НА БРОНИРОВАНИЕ*',
+    wa_name: '👤 Имя: ',
+    wa_phone: '📞 Телефон: ',
+    wa_date: '📆 Дата: ',
+    wa_time: '🕐 Время: ',
+    wa_people: '👥 Кол. человек: ',
+    wa_note: '📝 Заметка: ',
+    wa_order_header: '🛵 *НОВЫЙ ЗАКАЗ*',
+    wa_address: '🏠 Адрес: ',
+    wa_location: '📍 Местоположение: ',
+    wa_items: '🛒 *Заказ:*',
+    wa_total: '💰 Итого: ',
+    day_mon: 'Понедельник',
+    day_tue: 'Вторник',
+    day_wed: 'Среда',
+    day_thu: 'Четверг',
+    day_fri: 'Пятница',
+    day_sat: 'Суббота',
+    day_sun: 'Воскресенье',
+    cart_count_label: 'товаров'
+  }
+};
 
-// Qalerya lightbox
+// ── Current language ─────────────────────────────────────────
+let currentLang = localStorage.getItem('crp_lang') || 'az';
+
+function t(key) {
+  return (TRANSLATIONS[currentLang] && TRANSLATIONS[currentLang][key]) || TRANSLATIONS['az'][key] || key;
+}
+
+function applyLanguage() {
+  // Update all data-i18n elements
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    el.textContent = t(key);
+  });
+
+  // Update placeholders
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+    const key = el.getAttribute('data-i18n-placeholder');
+    el.placeholder = t(key);
+  });
+
+  // Update lang buttons
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.lang === currentLang);
+  });
+
+  // Update menu tabs text
+  const tabMap = {
+    sirin: t('tab_sirin'),
+    doyumlu: t('tab_doyumlu'),
+    soyuq: t('tab_soyuq'),
+    isti: t('tab_isti'),
+    setler: t('tab_setler')
+  };
+  document.querySelectorAll('.menu-tab').forEach(tab => {
+    const key = 'tab_' + tab.dataset.cat;
+    tab.textContent = t(key);
+  });
+
+  // Rebuild menu and FAQ with new language
+  buildMenu(activeCat);
+  buildFAQ();
+
+  // Update cart UI text
+  updateCartUI();
+
+  // Update html lang attribute
+  document.documentElement.lang = currentLang;
+}
+
+function setLanguage(lang) {
+  if (!TRANSLATIONS[lang]) return;
+  currentLang = lang;
+  localStorage.setItem('crp_lang', lang);
+  applyLanguage();
+}
+
+// ── State ────────────────────────────────────────────────────
+let cart = {};
+let activeCat = 'sirin';
+let currentModal = null;
+let userLocationLink = null;
+
+// Gallery lightbox
 let lbImages = [];
 let lbIndex  = 0;
 let lbStartX = 0;
 
-// ── DOM Referansları ─────────────────────────────────────────
+// ── DOM References ───────────────────────────────────────────
 const menuGrid      = document.getElementById('menuGrid');
 const cartBar       = document.getElementById('cartBar');
 const cartCount     = document.getElementById('cartCount');
@@ -52,37 +361,44 @@ document.addEventListener('DOMContentLoaded', () => {
   bindMenuTabs();
   bindNavToggle();
   bindForms();
+  bindLangSwitcher();
   setMinDate();
   updateCartUI();
+  applyLanguage();
 });
+
+// ============================================================
+//  LANGUAGE SWITCHER
+// ============================================================
+function bindLangSwitcher() {
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      setLanguage(btn.dataset.lang);
+    });
+  });
+}
 
 // ============================================================
 //  NAVIGATION
 // ============================================================
 function navigateTo(pageId) {
-  // Close mobile nav
   navMenu.classList.remove('open');
 
-  // Hide all pages
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
 
-  // Show target page
   const target = document.getElementById(pageId);
   if (target) {
     target.classList.add('active');
     window.scrollTo(0, 0);
   }
 
-  // Update bottom nav
   document.querySelectorAll('.bn-item').forEach(b => {
     b.classList.toggle('active', b.dataset.page === pageId);
   });
 
-  // If order page — sync cart
   if (pageId === 'sifaris') renderOrderItems();
 }
 
-// Handle URL hash
 function routeFromHash() {
   const hash = location.hash.replace('#', '') || 'haqqinda';
   navigateTo(hash);
@@ -110,6 +426,16 @@ function bindNavToggle() {
 // ============================================================
 //  MENU BUILD
 // ============================================================
+function getItemName(item) {
+  if (typeof item.name === 'object') return item.name[currentLang] || item.name.az || '';
+  return item.name;
+}
+
+function getItemDesc(item) {
+  if (typeof item.desc === 'object') return item.desc[currentLang] || item.desc.az || '';
+  return item.desc;
+}
+
 function buildMenu(catId) {
   const cat = MENU_DATA.find(c => c.id === catId);
   if (!cat) return;
@@ -120,16 +446,17 @@ function buildMenu(catId) {
     const card = document.createElement('div');
     card.className = 'menu-card';
     card.setAttribute('role', 'button');
-    card.setAttribute('aria-label', item.name);
+    const itemName = getItemName(item);
+    card.setAttribute('aria-label', itemName);
 
     card.innerHTML = `
       <div class="menu-card-img-wrap">
-        <img src="${item.img}" alt="${item.name}" class="menu-card-img" loading="lazy" />
+        <img src="${item.img}" alt="${itemName}" class="menu-card-img" loading="lazy" />
         ${item.popular ? '<span class="popular-badge">⭐ POPULYAR</span>' : ''}
-        <button class="menu-card-add" onclick="quickAdd(event,'${item.id}')" aria-label="Səbətə əlavə et">+</button>
+        <button class="menu-card-add" onclick="quickAdd(event,'${item.id}')" aria-label="Add to cart">+</button>
       </div>
       <div class="menu-card-body">
-        <div class="menu-card-name">${item.name}</div>
+        <div class="menu-card-name">${itemName}</div>
         <div class="menu-card-price">${formatPrice(item.price)}</div>
       </div>
     `;
@@ -169,9 +496,7 @@ function addToCart(itemId) {
   }
 
   updateCartUI();
-  showToast(`"${item.name}" səbətə əlavə edildi 🛒`);
-
-  // If modal is open — close it and go to order section after add
+  showToast(`"${getItemName(item)}" ${t('toast_added')}`);
 }
 
 function removeFromCart(itemId) {
@@ -197,7 +522,7 @@ function updateCartUI() {
 
   if (count > 0) {
     cartBar.classList.add('show');
-    cartCount.textContent = `${count} məhsul`;
+    cartCount.textContent = `${count} ${t('cart_count_label')}`;
     cartTotal.textContent = formatPrice(total);
   } else {
     cartBar.classList.remove('show');
@@ -218,19 +543,22 @@ function renderOrderItems() {
 
   if (entries.length === 0) {
     orderSummary.style.display = 'none';
-    orderItemsList.appendChild(emptyCartMsg);
-    emptyCartMsg.style.display = 'block';
+    const msgEl = document.getElementById('emptyCartMsg');
+    msgEl.innerHTML = `<span data-i18n="cart_empty">${t('cart_empty')}</span> <button class="text-link" onclick="navigateTo('menyu')" data-i18n="cart_go_menu">${t('cart_go_menu')}</button>`;
+    orderItemsList.appendChild(msgEl);
+    msgEl.style.display = 'block';
     return;
   }
 
-  emptyCartMsg.style.display = 'none';
+  const msgEl = document.getElementById('emptyCartMsg');
+  msgEl.style.display = 'none';
   orderSummary.style.display = 'block';
 
   entries.forEach(({ item, qty }) => {
     const row = document.createElement('div');
     row.className = 'order-item-row';
     row.innerHTML = `
-      <span class="oi-name">${item.name}</span>
+      <span class="oi-name">${getItemName(item)}</span>
       <div class="oi-qty-ctrl">
         <button class="oi-qty-btn" onclick="removeFromCart('${item.id}')">−</button>
         <span class="oi-qty">${qty}</span>
@@ -264,11 +592,11 @@ function addManualItem() {
   const name = nameEl.value.trim();
   const qty  = parseInt(qtyEl.value) || 1;
 
-  if (!name) { showToast('Məhsul adını daxil edin'); return; }
+  if (!name) { showToast(t('toast_manual_name')); return; }
 
   const fakeId = 'manual_' + Date.now();
   cart[fakeId] = {
-    item: { id: fakeId, name, price: 0 },
+    item: { id: fakeId, name: name, price: 0 },
     qty
   };
 
@@ -276,7 +604,7 @@ function addManualItem() {
   qtyEl.value  = '1';
   updateCartUI();
   renderOrderItems();
-  showToast(`"${name}" əlavə edildi`);
+  showToast(`"${name}" ${t('toast_added')}`);
 }
 
 // ============================================================
@@ -288,12 +616,13 @@ function openModal(itemId) {
   currentModal = item;
 
   document.getElementById('modalImg').src = item.img;
-  document.getElementById('modalImg').alt = item.name;
-  document.getElementById('modalName').textContent = item.name;
-  document.getElementById('modalIngredients').textContent = '🧾 Tərkib: ' + item.desc;
+  document.getElementById('modalImg').alt = getItemName(item);
+  document.getElementById('modalName').textContent = getItemName(item);
+  document.getElementById('modalIngredients').textContent = t('modal_ingredients') + getItemDesc(item);
   document.getElementById('modalPrice').textContent = formatPrice(item.price);
 
   const btn = document.getElementById('modalOrderBtn');
+  btn.textContent = t('modal_add');
   btn.onclick = () => {
     addToCart(item.id);
     closeModal();
@@ -322,7 +651,7 @@ function buildGallery() {
 
     const el = document.createElement('img');
     el.src         = img.src;
-    el.alt         = img.caption;
+    el.alt         = img.caption || '';
     el.className   = 'gallery-img';
     el.loading     = 'lazy';
 
@@ -348,12 +677,11 @@ function closeLightbox() {
 function showLbImage() {
   const d = lbImages[lbIndex];
   lbImg.src = d.src;
-  lbCaption.textContent = d.caption;
+  lbCaption.textContent = d.caption || '';
 }
 
 function lbGo(dir) {
   lbIndex = (lbIndex + dir + lbImages.length) % lbImages.length;
-  // Fade transition
   lbImg.style.opacity = '0';
   setTimeout(() => {
     showLbImage();
@@ -374,7 +702,6 @@ document.getElementById('lbPrev').addEventListener('click', () => lbGo(-1));
 document.getElementById('lbNext').addEventListener('click', () => lbGo(1));
 lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
 
-// Transition style
 lbImg.style.transition = 'opacity 0.15s ease';
 
 // ============================================================
@@ -382,7 +709,8 @@ lbImg.style.transition = 'opacity 0.15s ease';
 // ============================================================
 function buildFAQ() {
   faqList.innerHTML = '';
-  FAQ_DATA.forEach((faq, i) => {
+  const data = FAQ_DATA[currentLang] || FAQ_DATA.az;
+  data.forEach((faq) => {
     const item = document.createElement('div');
     item.className = 'faq-item';
 
@@ -402,7 +730,6 @@ function toggleFaq(btn) {
   const item = btn.closest('.faq-item');
   const wasOpen = item.classList.contains('open');
 
-  // Close all
   document.querySelectorAll('.faq-item').forEach(f => f.classList.remove('open'));
 
   if (!wasOpen) item.classList.add('open');
@@ -417,11 +744,11 @@ function getLocation() {
   const addrEl = document.getElementById('ordAddress');
 
   btn.disabled = true;
-  status.textContent = 'Konum alınır...';
+  status.textContent = t('location_getting');
   status.className = 'location-status';
 
   if (!navigator.geolocation) {
-    status.textContent = 'Konum dəstəklənmir';
+    status.textContent = t('location_not_supported');
     status.className = 'location-status err';
     btn.disabled = false;
     return;
@@ -432,21 +759,20 @@ function getLocation() {
       const lat = pos.coords.latitude.toFixed(6);
       const lon = pos.coords.longitude.toFixed(6);
 
-      // Save as Google Maps link
       userLocationLink = `https://maps.google.com/?q=${lat},${lon}`;
 
-      addrEl.value = `Mənim konum: ${lat}, ${lon}`;
-      status.textContent = '✓ Konum alındı';
+      addrEl.value = `${t('location_text')}${lat}, ${lon}`;
+      status.textContent = t('location_ok');
       status.className = 'location-status ok';
       btn.disabled = false;
     },
     err => {
       const msgs = {
-        1: 'Konum icazəsi verilmədi',
-        2: 'Konum tapılmadı',
-        3: 'Vaxt başa çatdı'
+        1: t('location_denied'),
+        2: t('location_not_found'),
+        3: t('location_timeout')
       };
-      status.textContent = msgs[err.code] || 'Xəta baş verdi';
+      status.textContent = msgs[err.code] || t('location_error');
       status.className = 'location-status err';
       btn.disabled = false;
     },
@@ -469,18 +795,18 @@ function bindForms() {
     const note   = document.getElementById('resNote').value.trim();
 
     if (!name || !phone || !date || !time || !people) {
-      showToast('Bütün məcburi xanaları doldurun ⚠️');
+      showToast(t('toast_fill'));
       return;
     }
 
     const msg = [
-      '📅 *REZERVASİYA SİFARİŞİ*',
-      `👤 Ad: ${name}`,
-      `📞 Telefon: ${phone}`,
-      `📆 Tarix: ${date}`,
-      `🕐 Saat: ${time}`,
-      `👥 Nəfər sayı: ${people}`,
-      note ? `📝 Qeyd: ${note}` : ''
+      t('wa_reservation_header'),
+      t('wa_name') + name,
+      t('wa_phone') + phone,
+      t('wa_date') + date,
+      t('wa_time') + time,
+      t('wa_people') + people,
+      note ? t('wa_note') + note : ''
     ].filter(Boolean).join('\n');
 
     openWhatsApp(RESERVE_WA, msg);
@@ -495,7 +821,7 @@ function bindForms() {
     const note    = document.getElementById('ordNote').value.trim();
 
     if (!name || !phone || !address) {
-      showToast('Ad, telefon və ünvanı doldurun ⚠️');
+      showToast(t('toast_fill_order'));
       return;
     }
 
@@ -503,27 +829,27 @@ function bindForms() {
     let itemLines = '';
 
     if (entries.length > 0) {
-      itemLines = '\n🛒 *Sifariş:*\n' + entries.map(({ item, qty }) =>
-        `• ${item.name} × ${qty}${item.price > 0 ? ' — ' + formatPrice(item.price * qty) : ''}`
+      itemLines = '\n' + t('wa_items') + '\n' + entries.map(({ item, qty }) =>
+        `• ${getItemName(item)} × ${qty}${item.price > 0 ? ' — ' + formatPrice(item.price * qty) : ''}`
       ).join('\n');
 
       const total = getCartTotal();
-      if (total > 0) itemLines += `\n💰 Cəmi: ${formatPrice(total)}`;
+      if (total > 0) itemLines += `\n${t('wa_total')}${formatPrice(total)}`;
     }
 
     let locationLine = '';
     if (userLocationLink) {
-      locationLine = `\n📍 Konum: ${userLocationLink}`;
+      locationLine = `\n${t('wa_location')}${userLocationLink}`;
     }
 
     const msg = [
-      '🛵 *YENİ SİFARİŞ*',
-      `👤 Ad: ${name}`,
-      `📞 Telefon: ${phone}`,
-      `🏠 Ünvan: ${address}`,
+      t('wa_order_header'),
+      t('wa_name') + name,
+      t('wa_phone') + phone,
+      t('wa_address') + address,
       locationLine,
       itemLines,
-      note ? `📝 Qeyd: ${note}` : ''
+      note ? t('wa_note') + note : ''
     ].filter(Boolean).join('\n');
 
     openWhatsApp(ORDER_WA, msg);
