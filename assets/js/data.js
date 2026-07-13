@@ -16,7 +16,7 @@ const MENU_DATA = [
         name: { az: '"Crepes" Bounty® ilə', en: '"Crepes" with Bounty®', ru: '"Crepes" с Bounty®' },
         desc: { az: 'Kokos, qaymaq, qatılaşdırılmış süd', en: 'Coconut, cream, condensed milk', ru: 'Кокос, сливки, сгущённое молоко' },
         price: 5.99,
-        img: 'assets/images/bouty.jpg',
+        img: 'assets/images/bounty.jpg',
         popular: true
       },
       {
@@ -24,7 +24,7 @@ const MENU_DATA = [
         name: { az: '"Crepes" Nutella® ilə', en: '"Crepes" with Nutella®', ru: '"Crepes" с Nutella®' },
         desc: { az: 'Nutella', en: 'Nutella', ru: 'Nutella' },
         price: 5.99,
-        img: 'assets/images/nutella.jpg',
+        img: 'assets/images/nutellaile.jpg',
         popular: true
       },
       {
@@ -48,7 +48,7 @@ const MENU_DATA = [
         name: { az: '"Crepes" Banan Qaymaq və Nutella® ilə', en: '"Crepes" with Banana, Cream & Nutella®', ru: '"Crepes" с Бананом, Сливками и Nutella®' },
         desc: { az: 'Banan, qaymaq, Nutella®', en: 'Banana, cream, Nutella®', ru: 'Банан, сливки, Nutella®' },
         price: 5.99,
-        img: 'assets/images/bananqaymaq.jpg',
+        img: 'assets/images/bananqaymaqnutella.jpg',
         popular: true
       },
       {
