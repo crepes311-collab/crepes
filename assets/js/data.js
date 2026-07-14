@@ -80,7 +80,7 @@ const MENU_DATA = [
         name: { az: 'Crepes Duzlu Karamel ilə', en: 'Crepes with Salted Caramel', ru: 'Крепе с Солёной Карамелью' },
         desc: { az: 'Duzlu karamel', en: 'Salted caramel', ru: 'Солёная карамель' },
         price: 4.00,
-        img: 'assets/images/duzlukaramel.jpg',
+        img: 'assets/images/bananqaymaqkrep.jpg',
         popular: false
       },
       {
@@ -96,7 +96,7 @@ const MENU_DATA = [
         name: { az: 'Crepes Extra Nutella və Banan Qaymaq ilə', en: 'Crepes Extra Nutella & Banana Cream', ru: 'Крепе Экстра Нутелла и Банан со Сливками' },
         desc: { az: 'Extra Nutella, banan, qaymaq', en: 'Extra Nutella, banana, cream', ru: 'Экстра Нутелла, банан, сливки' },
         price: 4.00,
-        img: 'assets/images/bananqaymaqkrep.jpg',
+        img: 'assets/images/duzlukaramel.jpg',
         popular: false
       },
       {
